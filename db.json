@@ -1,0 +1,16 @@
+{
+  "blogs": [
+    {
+      "id": "bdca",
+      "title": "Blog 1",
+      "author": "Bob",
+      "content": "This is content that Bob wrote."
+    },
+    {
+      "id": "097b",
+      "title": "a new blog",
+      "author": "Sam",
+      "content": "This is some content"
+    }
+  ]
+}

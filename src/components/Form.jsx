@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { baseUrl, headers } from '../Global'
 
 const initialState = {
   title: "",
@@ -27,8 +28,18 @@ const Form = ({ addBlog }) => {
   function handleSubmit(event) {
     event.preventDefault()
 
-    addBlog(formData)
-    setFormData(initialState)
+    const options = {
+      method: "POST",
+      headers,
+      body: JSON.stringify(formData)
+    }
+
+    fetch(baseUrl + "/blogs", options)
+      .then(resp => resp.json())
+      .then(data => {
+        addBlog(data)
+        setFormData(initialState) // even optional!
+      })
   }
 
   return (
