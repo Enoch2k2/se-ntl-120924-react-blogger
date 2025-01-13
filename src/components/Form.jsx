@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { baseUrl, headers } from '../Global'
+import { useNavigate } from 'react-router-dom'
 
 const initialState = {
   title: "",
@@ -13,6 +14,7 @@ const Form = ({ addBlog }) => {
   // const [content, setContent] = useState("")
 
   const [formData, setFormData] = useState(initialState)
+  const navigate = useNavigate()
 
   function handleChange(event) {
     // event.target.name // title
@@ -38,7 +40,7 @@ const Form = ({ addBlog }) => {
       .then(resp => resp.json())
       .then(data => {
         addBlog(data)
-        setFormData(initialState) // even optional!
+        navigate("/blogs")
       })
   }
 
