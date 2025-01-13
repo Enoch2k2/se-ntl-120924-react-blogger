@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { baseUrl, headers } from '../Global'
+import { useOutletContext, useNavigate } from 'react-router-dom'
 
 const initialState = {
   title: "",
@@ -7,10 +8,13 @@ const initialState = {
   content: ""
 }
 
-const Form = ({ addBlog }) => {
+const Form = () => {
   // const [title, setTitle] = useState("")
   // const [author, setAuthor] = useState("")
   // const [content, setContent] = useState("")
+  const navigate = useNavigate()
+
+  const { addBlog } = useOutletContext()
 
   const [formData, setFormData] = useState(initialState)
 
@@ -38,7 +42,7 @@ const Form = ({ addBlog }) => {
       .then(resp => resp.json())
       .then(data => {
         addBlog(data)
-        setFormData(initialState) // even optional!
+        navigate("/blogs")
       })
   }
 

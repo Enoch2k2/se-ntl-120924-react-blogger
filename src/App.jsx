@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import Form from "./components/Form"
-import List from "./components/List"
 
 import { baseUrl } from "./Global"
+import { Outlet } from "react-router-dom"
+import Navbar from "./components/Navbar"
 
 function App() {
   const [blogs, setBlogs] = useState([])
@@ -20,9 +20,9 @@ function App() {
 
   return (
     <>
+      <Navbar />
       <h1>Welcome to Blogger!</h1>
-      <Form addBlog={addBlog} />
-      <List blogs={blogs} />
+      <Outlet context={{ blogs, addBlog }} />
     </>
   )
 }

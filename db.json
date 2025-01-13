@@ -11,6 +11,12 @@
       "title": "a new blog",
       "author": "Sam",
       "content": "This is some content"
+    },
+    {
+      "id": "7a94",
+      "title": "Blog 2",
+      "author": "Captain Barbosa",
+      "content": "Yarr Matey!"
     }
   ]
 }
