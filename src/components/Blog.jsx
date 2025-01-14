@@ -1,8 +1,10 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
+import { baseUrl } from '../Global'
 
-const Blog = ({ blogs }) => {
+const Blog = ({ blogs, removeBlog }) => {
   const { id } = useParams()
+  const navigate = useNavigate()
 
   const blog = blogs.find(blog => blog.id === id)
 
@@ -10,11 +12,27 @@ const Blog = ({ blogs }) => {
     return <h3>Blog doesn't exist</h3>
   }
 
+  function handleDelete(event) {
+    event.preventDefault()
+    
+    const options = {
+      method: "DELETE"
+    }
+
+    fetch(baseUrl + "/blogs/" + id, options)
+
+    removeBlog(id)
+
+    navigate("/blogs")
+  }
+
   return (
     <div>
       <h3>{blog.title}</h3>
       <p>By: {blog.author}</p>
       <p>{blog.content}</p>
+      <Link to={`/blogs/${id}/edit`}>Edit</Link>
+      <a href="#" style={{ marginLeft: '10px'}} onClick={handleDelete}>Delete</a>
     </div>
   )
 }

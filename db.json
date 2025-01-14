@@ -1,34 +1,16 @@
 {
   "blogs": [
     {
-      "id": "bdca",
-      "title": "Blog 1",
-      "author": "Bob",
-      "content": "This is content that Bob wrote."
-    },
-    {
       "id": "097b",
-      "title": "a new blog",
+      "title": "Lost Frodo Again",
       "author": "Sam",
-      "content": "This is some content"
+      "content": "Is he still in the mountain?"
     },
     {
       "id": "b9f6",
-      "title": "Blog 2",
+      "title": "Stole the black pearl again",
       "author": "Captain Barbosa",
-      "content": "yarr matey"
-    },
-    {
-      "id": "4999",
-      "title": "Add ",
-      "author": "a",
-      "content": "new blog"
-    },
-    {
-      "id": "2028",
-      "title": "Does",
-      "author": "this",
-      "content": "work?"
+      "content": "Captain Jack got left back on the island again."
     }
   ]
 }

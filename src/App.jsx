@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar"
 
 import { Routes, Route } from "react-router-dom"
 import Blog from "./components/Blog"
+import EditForm from "./components/EditForm"
 
 function App() {
   const [blogs, setBlogs] = useState([])
@@ -20,6 +21,17 @@ function App() {
   function addBlog(blog) {
     const updatedblogs = [...blogs, blog]
     setBlogs(updatedblogs)
+  }
+
+  function updateBlog(updatedBlog) {
+    const updatedBlogs = blogs.map(blog => updatedBlog.id === blog.id ? updatedBlog : blog)
+
+    setBlogs(updatedBlogs)
+  }
+
+  function removeBlog(id) {
+    const updatedBlogs = blogs.filter(blog => blog.id !== id)
+    setBlogs(updatedBlogs)
   }
 
   return (
@@ -36,8 +48,12 @@ function App() {
           element={<List blogs={blogs} />}
         />
         <Route
+          path="/blogs/:id/edit"
+          element={<EditForm blogs={blogs} updateBlog={ updateBlog } />}
+        />
+        <Route
           path="/blogs/:id"
-          element={<Blog blogs={blogs} />}
+          element={<Blog blogs={blogs} removeBlog={removeBlog} />}
         />
       </Routes>
     </>
