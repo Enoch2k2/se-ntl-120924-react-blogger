@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Card from './Card'
+import { BlogsContext } from '../context/BlogsContext'
 
-const List = ({ blogs }) => {
+const List = () => {
+  const { blogs } = useContext(BlogsContext)
 
   const blogCards = blogs.map((blog, idx) => <Card key={idx+1} blog={blog} />)
 

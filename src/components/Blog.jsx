@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { baseUrl } from '../Global'
+import { BlogsContext } from '../context/BlogsContext'
 
-const Blog = ({ blogs, removeBlog }) => {
+const Blog = () => {
   const { id } = useParams()
   const navigate = useNavigate()
+  const { blogs, removeBlog } = useContext(BlogsContext)
 
   const blog = blogs.find(blog => blog.id === id)
 

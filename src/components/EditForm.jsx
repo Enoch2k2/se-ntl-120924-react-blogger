@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { baseUrl, headers } from '../Global'
+import { BlogsContext } from '../context/BlogsContext'
 
-const EditForm = ({blogs, updateBlog}) => {
+const EditForm = () => {
   const { id } = useParams()
   const navigate = useNavigate()
+  const {blogs, updateBlog} = useContext(BlogsContext)
   
   const blog = blogs.find(blog => blog.id === id)
   

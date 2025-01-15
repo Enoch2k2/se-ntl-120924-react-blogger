@@ -1,16 +1,22 @@
 {
   "blogs": [
     {
-      "id": "097b",
-      "title": "Lost Frodo Again",
-      "author": "Sam",
-      "content": "Is he still in the mountain?"
-    },
-    {
       "id": "b9f6",
       "title": "Stole the black pearl again",
       "author": "Captain Barbosa",
-      "content": "Captain Jack got left back on the island again."
+      "content": "Captain Jack got left back on the island again. He won't get off the island by building a raft with the hair on his back."
+    },
+    {
+      "id": "e5ca",
+      "title": "Pizza with no anchovies",
+      "author": "Michelangelo",
+      "content": "If the pizza guy gives us pizza with anchovies on it, then we are buying for 5 dollars cheaper."
+    },
+    {
+      "id": "be84",
+      "title": "I like to go fast",
+      "author": "Ricky Bobby",
+      "content": "If your not first your last."
     }
   ]
 }

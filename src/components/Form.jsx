@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { baseUrl, headers } from '../Global'
 import { useNavigate } from 'react-router-dom'
+import { BlogsContext } from '../context/BlogsContext'
 
 const initialState = {
   title: "",
@@ -8,13 +9,14 @@ const initialState = {
   content: ""
 }
 
-const Form = ({ addBlog }) => {
+const Form = () => {
   // const [title, setTitle] = useState("")
   // const [author, setAuthor] = useState("")
   // const [content, setContent] = useState("")
 
   const [formData, setFormData] = useState(initialState)
   const navigate = useNavigate()
+  const { addBlog } = useContext(BlogsContext)
 
   function handleChange(event) {
     // event.target.name // title
