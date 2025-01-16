@@ -8,6 +8,9 @@ import Navbar from "./components/Navbar"
 import { Routes, Route } from "react-router-dom"
 import Blog from "./components/Blog"
 import EditForm from "./components/EditForm"
+import Home from "./components/Home"
+
+import { Container } from "@mui/material"
 
 function App() {
   const [blogs, setBlogs] = useState([])
@@ -37,8 +40,12 @@ function App() {
   return (
     <>
       <Navbar />
-      <h1>Welcome to Blogger!</h1>
+      <Container>
       <Routes>
+        <Route 
+          path="/" 
+          element={<Home />}
+        />
         <Route 
           path="/blogs/new" 
           element={<Form addBlog={addBlog} />}
@@ -56,6 +63,7 @@ function App() {
           element={<Blog blogs={blogs} removeBlog={removeBlog} />}
         />
       </Routes>
+      </Container>
     </>
   )
 }

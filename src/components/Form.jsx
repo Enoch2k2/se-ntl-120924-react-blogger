@@ -1,90 +1,83 @@
-import React, { useState } from 'react'
-import { baseUrl, headers } from '../Global'
-import { useNavigate } from 'react-router-dom'
-
-const initialState = {
-  title: "",
-  author: "",
-  content: ""
-}
+import React, { useState } from 'react';
+import { TextField, Button, Box, Container, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Form = ({ addBlog }) => {
-  // const [title, setTitle] = useState("")
-  // const [author, setAuthor] = useState("")
-  // const [content, setContent] = useState("")
-
-  const [formData, setFormData] = useState(initialState)
-  const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    title: '',
+    author: '',
+    content: ''
+  });
+  const navigate = useNavigate();
 
   function handleChange(event) {
-    // event.target.name // title
-    // event.target.value // value of the title input
-    const { name, value } = event.target
-
+    const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value
-    })
+    });
   }
 
   function handleSubmit(event) {
-    event.preventDefault()
-
-    const options = {
-      method: "POST",
-      headers,
+    event.preventDefault();
+    fetch('http://localhost:3000/blogs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(formData)
     }
-
-    fetch(baseUrl + "/blogs", options)
-      .then(resp => resp.json())
+    )
+      .then(response => response.json())
       .then(data => {
-        addBlog(data)
-        navigate("/blogs")
+        addBlog(data);
+        navigate('/blogs');
       })
   }
 
   return (
-    <div>
-      <h2>Create Blog</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title: </label>
-          <input 
-            type="text"
+    <Container maxWidth="sm">
+      <Box sx={{ mt: 4, mb: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Create a New Blog
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="Title"
             name="title"
-            id="title"
             value={formData.title}
-            onChange={handleChange} 
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            required
           />
-        </div><br />
-        <div>
-          <label htmlFor="author">Author: </label>
-          <input 
-            type="text"
+          <TextField
+            label="Author"
             name="author"
-            id="author"
             value={formData.author}
             onChange={handleChange}
-           />
-        </div><br />
-        <div>
-          <label htmlFor="content">Content: </label><br />
-          <textarea 
-            type="text"
+            fullWidth
+            margin="normal"
+            required
+          />
+          <TextField
+            label="Content"
             name="content"
-            id="content"
-            rows={15}
-            cols={50}
             value={formData.content}
             onChange={handleChange}
-          >
-          </textarea>
-        </div>
-        <button type="submit">Create Blog</button>
-      </form>
-    </div>
-  )
-}
+            fullWidth
+            margin="normal"
+            multiline
+            rows={4}
+            required
+          />
+          <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
+            Submit
+          </Button>
+        </form>
+      </Box>
+    </Container>
+  );
+};
 
-export default Form
+export default Form;

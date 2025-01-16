@@ -1,16 +1,10 @@
 {
   "blogs": [
     {
-      "id": "097b",
-      "title": "Lost Frodo Again",
-      "author": "Sam",
-      "content": "Is he still in the mountain?"
-    },
-    {
-      "id": "b9f6",
-      "title": "Stole the black pearl again",
-      "author": "Captain Barbosa",
-      "content": "Captain Jack got left back on the island again."
+      "id": "07a2",
+      "title": "I like to go fast",
+      "author": "Ricky Bobby",
+      "content": "Shake n Bake, if your not first your last!!!!"
     }
   ]
 }
