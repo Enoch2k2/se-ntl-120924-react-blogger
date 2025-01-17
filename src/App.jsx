@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Form from "./components/Form"
 import List from "./components/List"
 
@@ -11,36 +11,43 @@ import EditForm from "./components/EditForm"
 import Home from "./components/Home"
 
 import { Container } from "@mui/material"
+import { useFullCrud } from "./hooks/blog"
 
 function App() {
-  const [blogs, setBlogs] = useState([])
+  // const [blogs, setBlogs] = useState([])
+  const [blogs, fetchBlogs, addBlog, removeBlog, updateBlog] = useFullCrud()
+  // const counter = useRef(0)
 
   useEffect(() => {
-    fetch(baseUrl + "/blogs")
-      .then(resp => resp.json())
-      .then(data => setBlogs(data))
+    // fetch(baseUrl + "/blogs")
+    //   .then(resp => resp.json())
+    //   .then(data => setBlogs(data))
+    fetchBlogs(baseUrl + "/blogs")
   }, [])
 
-  function addBlog(blog) {
-    const updatedblogs = [...blogs, blog]
-    setBlogs(updatedblogs)
-  }
+  // function addBlog(blog) {
+  //   const updatedblogs = [...blogs, blog]
+  //   setBlogs(updatedblogs)
+  // }
 
-  function updateBlog(updatedBlog) {
-    const updatedBlogs = blogs.map(blog => updatedBlog.id === blog.id ? updatedBlog : blog)
+  // function updateBlog(updatedBlog) {
+  //   const updatedBlogs = blogs.map(blog => updatedBlog.id === blog.id ? updatedBlog : blog)
 
-    setBlogs(updatedBlogs)
-  }
+  //   setBlogs(updatedBlogs)
+  // }
 
-  function removeBlog(id) {
-    const updatedBlogs = blogs.filter(blog => blog.id !== id)
-    setBlogs(updatedBlogs)
-  }
+  // function removeBlog(id) {
+  //   const updatedBlogs = blogs.filter(blog => blog.id !== id)
+  //   setBlogs(updatedBlogs)
+  // }
 
   return (
     <>
       <Navbar />
       <Container>
+        {/* {counter.current}
+        <button onClick={() => counter.current++}>Increment!</button>
+        <button onClick={() => console.log(counter.current)}>Log Counter</button> */}
       <Routes>
         <Route 
           path="/" 

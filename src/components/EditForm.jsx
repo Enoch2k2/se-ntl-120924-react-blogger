@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Container, TextField, Button, Box, Typography } from '@mui/material';
 import { baseUrl, headers } from '../Global';
+import { useHandleChange } from '../hooks/form';
 
 const EditForm = ({ blogs, updateBlog }) => {
   const { id } = useParams();
@@ -13,19 +14,25 @@ const EditForm = ({ blogs, updateBlog }) => {
     return <Typography variant="h6">Blog doesn't exist</Typography>;
   }
 
-  const [formData, setFormData] = useState({
+  // const [formData, setFormData] = useState({
+  //   title: blog.title,
+  //   author: blog.author,
+  //   content: blog.content
+  // });
+
+  const [formData, handleChange] = useHandleChange({
     title: blog.title,
     author: blog.author,
-    content: blog.content
-  });
+    content: blog.content    
+  })
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value
+  //   });
+  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useHandleChange } from '../hooks/form';
 
 const Form = ({ addBlog }) => {
-  const [formData, setFormData] = useState({
-    title: '',
-    author: '',
-    content: ''
-  });
+  // const [formData, setFormData] = useState({
+  //   title: '',
+  //   author: '',
+  //   content: ''
+  // });
+  const [formData, handleChange] = useHandleChange({
+    title: "",
+    author: "",
+    content: ""
+  })
   const navigate = useNavigate();
 
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  }
+  // function handleChange(event) {
+  //   const { name, value } = event.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value
+  //   });
+  // }
 
   function handleSubmit(event) {
     event.preventDefault();
